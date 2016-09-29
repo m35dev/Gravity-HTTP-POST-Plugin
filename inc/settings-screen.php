@@ -79,6 +79,7 @@
 			} ?>
     	</th><!-- end row header -->
     	<td>
+
 			<?php if ($field['inputs']) { // if field has multiple inputs defined ?>
 
 	    		<label for="field_<?php echo $field_id; ?>_serialize">Serialize Multi-Field Input?</label>
@@ -89,12 +90,12 @@
 			
 				<fieldset id="field_<?php echo $field_id; ?>_serialize_map" class="additional_options">
 				
-				<?php foreach ($field['inputs'] as $k => $input) : ?>
+				<?php foreach ($field['inputs'] as $input) : ?>
 
 					<?php $input_id = str_replace('.', '_', $input['id']); ?>
 											
 					<label for="field_<?php echo $input_id; ?>_map" ><?php echo $input['label']; ?></label>
-					<input type="text" class="field_map_name" id="field_<?php echo $input_id; ?>_map" name="field_<?php echo $input_id; ?>_map" class="fieldwidth-2" value="<?php echo $field['http_map']; ?>">
+					<input type="text" class="field_map_name" id="field_<?php echo $input_id; ?>_map" name="field_<?php echo $input_id; ?>_map" class="fieldwidth-2" value="<?php echo $input['http_map']; ?>">
 
 				<?php endforeach; ?>
 				</fieldset>
