@@ -91,7 +91,7 @@ class GravityHTTPRequest {
 		}
 
 		if ($form['http_request_settings']['http_request_type'] === 'post_request') {
-						
+
 			$response = $request->request( $post_url, array( 'method' => 'POST', 'body' => $post_body, 'sslverify' => false ) );
 
 		} elseif ($form['http_request_settings']['http_request_type'] === 'get_request') {
@@ -146,26 +146,26 @@ class GravityHTTPRequest {
 
 				if ($field['inputs']) {
 
-					$form['fields'][$idx]['http_map'] = rgpost('field_'.$field['id'].'_map');
-					$form['fields'][$idx]['http_output'] = rgpost('field_'.$field['id'].'_serialize');
+					$field['http_map'] = rgpost('field_'.$field['id'].'_map');
+					$field['http_output'] = rgpost('field_'.$field['id'].'_serialize');
 
 					foreach ($field['inputs'] as $iidx => $input) {
 
 						$input_id = str_replace('.', '_', $input['id']);
-
-						$form['fields'][$idx]['inputs'][$iidx]['http_map'] = rgpost('field_'.$input_id.'_map');
+                        $input['http_map'] = rgpost('field_'.$input_id.'_map');
+                        $field->inputs[$iidx] = $input;
+						//$form['fields'][$idx]['inputs'][$iidx]['http_map'] = rgpost('field_'.$input_id.'_map');
 					}
 
 				} else {
 
-					$form['fields'][$idx]['http_map'] = rgpost('field_'.$field['id'].'_map');
+					$field['http_map'] = rgpost('field_'.$field['id'].'_map');
 
 					if ($field['choices']) {
 
-						$form['fields'][$idx]['value_output'] = rgpost('field_'.$field['id'].'_value_output');
+						$field['value_output'] = rgpost('field_'.$field['id'].'_value_output');
 					}
 				}
-
 			}
 
 			$result = GFAPI::update_form($form);
@@ -174,7 +174,7 @@ class GravityHTTPRequest {
 		GFFormSettings::page_header();
 
 		include_once(GRAVITY_HTTP_PATH.'settings-screen.php');
-		
+
 		GFFormSettings::page_footer();
 	}
 
@@ -190,10 +190,10 @@ class GravityHTTPRequest {
 
 		} else {
 
-		} 
+		}
 	}
 
-} 
+}
 
 if (class_exists('GFForms')) {
 	new GravityHTTPRequest();
