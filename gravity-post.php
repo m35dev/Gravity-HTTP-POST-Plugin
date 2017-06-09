@@ -4,7 +4,7 @@
 Plugin Name: Gravity HTTP Request Plugin
 Plugin URI: http://www.chrisgoddard.me
 Description: Send Gravity Forms submissions via HTTP request
-Version: 0.1.1
+Version: 0.1.2
 Author: Chris Goddard
 Author Email: chris@chrisgoddard.me
 License:
